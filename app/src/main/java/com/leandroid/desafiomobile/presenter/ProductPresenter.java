@@ -5,7 +5,7 @@ import com.leandroid.desafiomobile.view.fragment.IProductFragment;
 
 public class ProductPresenter {
 
-    public void mountProductList(IProductFragment iProductFragment,String query ){
-        ProductService.mountProduct(iProductFragment,query);
+    public void mountProductList(IProductFragment iProductFragment,int offset,String query ){
+        ProductService.mountProduct(iProductFragment,offset,query);
     }
 }

@@ -34,6 +34,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProdutoV
         return productList.size();
     }
 
+    public void setItems(List<Product> productList) {
+        this.productList = productList;
+    }
+
     @Override
     public void onBindViewHolder(final ProdutoViewHolder produtoViewHolder, final int i) {
 

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +16,26 @@ import com.leandroid.desafiomobile.R;
 import com.leandroid.desafiomobile.model.Data;
 import com.leandroid.desafiomobile.model.Product;
 import com.leandroid.desafiomobile.presenter.ProductPresenter;
+import com.leandroid.desafiomobile.util.EndlessRecyclerViewScrollListener;
 import com.leandroid.desafiomobile.view.adapter.ProductAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ProductFragment extends Fragment implements IProductFragment {
 
     private Context context;
     private RecyclerView recList;
     private RelativeLayout rlLoadgin;
+    private ProductAdapter productAdapter;
+    private GridLayoutManager llm;
+    private int pageScreen = 0;
+    private List<Product> productList = new ArrayList<Product>();
+    private EndlessRecyclerViewScrollListener scrollListener;
     private ProductPresenter productPresenter = new ProductPresenter();
 
     public ProductFragment() {
-        // Required empty public constructor
+
     }
 
     public static ProductFragment newInstance() {
@@ -60,21 +66,46 @@ public class ProductFragment extends Fragment implements IProductFragment {
     }
 
     private void setAction(){
-        productPresenter.mountProductList(this,"");
+        productPresenter.mountProductList(this,pageScreen,"");
     }
 
     @Override
     public void mountProduct(Data data) {
 
-        context = getActivity().getApplicationContext();
-        recList.setHasFixedSize(true);
-        GridLayoutManager llm = new GridLayoutManager(getContext(),2);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        addProductList(data.getProducts());
 
-        ProductAdapter productAdapter = new ProductAdapter(this,data.getProducts(),context);
-        recList.setAdapter(productAdapter);
+        if(pageScreen == 0){
+            context = getActivity().getApplicationContext();
+            recList.setHasFixedSize(true);
+            llm = new GridLayoutManager(getContext(),2);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recList.setLayoutManager(llm);
 
-        rlLoadgin.setVisibility(View.GONE);
+            productAdapter = new ProductAdapter(this,productList,context);
+            recList.setAdapter(productAdapter);
+            rlLoadgin.setVisibility(View.GONE);
+        }else{
+            productAdapter.setItems(productList);
+            productAdapter.notifyDataSetChanged();
+        }
+
+        scrollListener = new EndlessRecyclerViewScrollListener(llm) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                loadNextDataFromApi();
+            }
+        };
+        recList.addOnScrollListener(scrollListener);
+    }
+
+    public void loadNextDataFromApi() {
+        pageScreen = pageScreen +1;
+        productPresenter.mountProductList(this,pageScreen,"");
+    }
+
+    public void addProductList(List<Product> list){
+        for(int i=0;i<list.size();i++){
+            productList.add(list.get(i));
+        }
     }
 }

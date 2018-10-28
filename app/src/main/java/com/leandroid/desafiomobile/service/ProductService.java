@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductService {
 
-    public static void mountProduct(final IProductFragment iProductFragment,String query){
+    public static void mountProduct(final IProductFragment iProductFragment,int offset,String query){
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(60, TimeUnit.SECONDS)
@@ -35,7 +35,7 @@ public class ProductService {
                 .build();
 
         IProductService iService = retrofit.create(IProductService.class);
-        Call<Data> request = iService.mountProduct(new ProductRequest(query,0,10));
+        Call<Data> request = iService.mountProduct(new ProductRequest(query,offset,10));
 
         request.enqueue(new Callback<Data>() {
             @Override
