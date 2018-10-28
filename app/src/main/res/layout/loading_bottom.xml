@@ -3,23 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:layout_height="wrap_content"
+    android:background="@color/colorGreen"
     >
-
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_loading"
-        android:layout_below="@+id/pb_loading"
+        android:text="@string/text_bottom_loading"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="@dimen/margin_bottom"
         />
 
 </RelativeLayout>

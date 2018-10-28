@@ -18,4 +18,5 @@
     <string name="menu_drawer_configuracoes">Configurações</string>
     <string name="text_loading">Carregando dados</string>
     <string name="text_faca_login">Faça login</string>
+    <string name="text_bottom_loading">Carregando dados do servidor ...</string>
 </resources>

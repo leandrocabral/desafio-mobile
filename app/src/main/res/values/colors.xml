@@ -8,4 +8,7 @@
     <color name="colorBackgroundCard">#FFFFFF</color>
     <color name="colorGray">#F0F0F0</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGreen">#009933</color>
+
+
 </resources>
