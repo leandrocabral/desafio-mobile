@@ -5,34 +5,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menu_drawer_home"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_pedidos"
+            android:icon="@drawable/ic_menu_pedido"
+            android:title="@string/menu_drawer_pedidos"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_carrinho"
+            android:icon="@drawable/ic_menu_carrinho"
+            android:title="@string/menu_drawer_carrinho"/>
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_favoritos"
+            android:icon="@drawable/ic_menu_favorite"
+            android:title="@string/menu_drawer_favoritos"/>
+        <item
+            android:id="@+id/nav_categoria"
+            android:icon="@drawable/ic_menu_categoria"
+            android:title="@string/menu_drawer_categoria"/>
+        <item
+            android:id="@+id/nav_loja"
+            android:icon="@drawable/ic_menu_mapa"
+            android:title="@string/menu_drawer_loja"/>
+        <item
+            android:id="@+id/nav_atendimento"
+            android:icon="@drawable/ic_menu_atendimento"
+            android:title="@string/menu_drawer_atendimento"/>
+        <item
+            android:id="@+id/nav_politica"
+            android:icon="@drawable/ic_menu_politica"
+            android:title="@string/menu_drawer_politica"/>
+        <item
+            android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/ic_menu_configuracoes"
+            android:title="@string/menu_drawer_configuracoes"/>
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
 
 </menu>
