@@ -56,10 +56,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProdutoV
         vPrecoTabela.setText(MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getListPrice()));
         vPrecoTabela.setPaintFlags(vPrecoTabela.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         vPrecoTotal.setText(MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getPrice()));
-        vPrecoParcelado.setText(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getCount()
-                +context.getResources().getString(R.string.text_multiplicador)
-                +context.getResources().getString(R.string.text_de)
-                +MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getValue()));
+
+        if(product.getSkus().get(0).getSellers().get(0).getBestInstallment()!=null){
+            vPrecoParcelado.setText(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getCount()
+                    +context.getResources().getString(R.string.text_multiplicador)
+                    +context.getResources().getString(R.string.text_de)
+                    +MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getValue()));
+        }
 
         Picasso.with(context)
                 .load(product.getSkus().get(0).getImages().get(0).getImageUrl())

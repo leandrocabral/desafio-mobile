@@ -23,4 +23,9 @@
     <string name="text_multiplicador">X</string>
     <string name="text_de">&#160;de&#160;</string>
     <string name="text_desconto">OFF</string>
+    <string name="text_search">Pesquise</string>
+    <string name="text_busca">Você buscou por</string>
+    <string name="text_busca_vazio">-</string>
+    <string name="text_result">Resultado</string>
+    <string name="text_result_zero">0</string>
 </resources>

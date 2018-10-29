@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.SearchActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+         >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_centerVertical="true"
+                />
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_search"
+                android:textColorHint="@color/colorWhite"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="35dp"
+                android:layout_toRightOf="@+id/iv_arrow_back"
+                android:lines="1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_white"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/margin_default_toolbar"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/rv_topo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_below="@+id/toolbar"
+        android:padding="@dimen/margin_default"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            >
+            <TextView
+                android:id="@+id/tv_top_busca"
+                android:layout_width ="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_busca"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_result_busca"
+                android:layout_width ="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_busca_vazio"
+                android:layout_below="@+id/tv_top_busca"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            >
+
+            <TextView
+                android:id="@+id/tv_number_result"
+                android:layout_width ="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_result_zero"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width ="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_number_result"
+                android:text="@string/text_result"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rv_topo"
+        />
+
+    <include
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:visibility="gone"
+        layout="@layout/loading_data"
+        />
+
+</RelativeLayout>

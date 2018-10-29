@@ -31,13 +31,4 @@
         layout="@layout/loading_data"
         />
 
-    <include
-        android:id="@+id/loading_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/loading_bottom"
-        android:visibility="gone"
-        />
-
 </RelativeLayout>

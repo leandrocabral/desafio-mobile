@@ -27,7 +27,6 @@ public class ProductFragment extends Fragment implements IProductFragment {
     private Context context;
     private RecyclerView recList;
     private RelativeLayout rlLoading;
-    private RelativeLayout rlLoadingBottom;
     private ProductAdapter productAdapter;
     private GridLayoutManager llm;
     private int pageScreen = 0;
@@ -64,7 +63,6 @@ public class ProductFragment extends Fragment implements IProductFragment {
     private void setComponents(View v){
         recList         = (RecyclerView) v.findViewById(R.id.rv_product);
         rlLoading       = (RelativeLayout) v.findViewById(R.id.loading);
-        rlLoadingBottom = (RelativeLayout) v.findViewById(R.id.loading_bottom);
     }
 
     private void setAction(){
@@ -72,7 +70,7 @@ public class ProductFragment extends Fragment implements IProductFragment {
     }
 
     @Override
-    public void mountProduct(Data data) {
+    public void mountProduct(Data data,String search) {
 
         addProductList(data.getProducts());
 
@@ -91,13 +89,11 @@ public class ProductFragment extends Fragment implements IProductFragment {
         }
 
         rlLoading.setVisibility(View.GONE);
-        rlLoadingBottom.setVisibility(View.GONE);
 
         scrollListener = new EndlessRecyclerViewScrollListener(llm) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 loadNextDataFromApi();
-                rlLoadingBottom.setVisibility(View.VISIBLE);
             }
         };
         recList.addOnScrollListener(scrollListener);

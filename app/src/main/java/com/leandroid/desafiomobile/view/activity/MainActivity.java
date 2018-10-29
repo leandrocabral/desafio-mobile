@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.leandroid.desafiomobile.R;
+import com.leandroid.desafiomobile.presenter.MainPresenter;
 import com.leandroid.desafiomobile.view.fragment.ProductFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private  DrawerLayout drawer;
     private  NavigationView navigationView;
     private  ActionBarDrawerToggle toggle;
+    private MainPresenter mainPresenter = new MainPresenter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.ic_search) {
-
+            mainPresenter.openScreenSearch(this);
             return true;
         }
 

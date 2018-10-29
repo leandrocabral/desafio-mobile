@@ -10,6 +10,6 @@
     <dimen name="margin_favorite">10dp</dimen>
     <dimen name="margin_bottom">5dp</dimen>
     <dimen name="margin_default">10dp</dimen>
-
+    <dimen name="margin_default_toolbar">10dp</dimen>
 
 </resources>
