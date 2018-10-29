@@ -19,6 +19,9 @@ public class Seller {
     @SerializedName("ListPrice")
     private Double listPrice;
 
+    @SerializedName("BestInstallment")
+    private BestInstallment bestInstallment;
+
     public String getId() {
         return id;
     }
@@ -57,5 +60,13 @@ public class Seller {
 
     public void setListPrice(Double listPrice) {
         this.listPrice = listPrice;
+    }
+
+    public BestInstallment getBestInstallment() {
+        return bestInstallment;
+    }
+
+    public void setBestInstallment(BestInstallment bestInstallment) {
+        this.bestInstallment = bestInstallment;
     }
 }

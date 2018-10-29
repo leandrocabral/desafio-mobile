@@ -19,4 +19,8 @@
     <string name="text_loading">Carregando dados</string>
     <string name="text_faca_login">Faça login</string>
     <string name="text_bottom_loading">Carregando dados do servidor ...</string>
+    <string name="text_moeda">R$&#160;</string>
+    <string name="text_multiplicador">X</string>
+    <string name="text_de">&#160;de&#160;</string>
+    <string name="text_desconto">OFF</string>
 </resources>

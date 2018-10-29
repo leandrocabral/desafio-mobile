@@ -1,6 +1,7 @@
 package com.leandroid.desafiomobile.view.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.leandroid.desafiomobile.R;
 import com.leandroid.desafiomobile.model.Product;
+import com.leandroid.desafiomobile.util.MonetarioUtil;
 import com.leandroid.desafiomobile.util.StringUtil;
 import com.leandroid.desafiomobile.view.fragment.IProductFragment;
 import com.squareup.picasso.Picasso;
@@ -43,11 +45,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProdutoV
 
         Product product = productList.get(i);
 
-        final CardView  vCardProduto  = produtoViewHolder.vCardProduto;
-        final TextView  vTitleProduto = produtoViewHolder.vTitleProduto;
-        final ImageView vImageProduto = produtoViewHolder.vImageProduto;
+        final CardView  vCardProduto     = produtoViewHolder.vCardProduto;
+        final TextView  vTitleProduto    = produtoViewHolder.vTitleProduto;
+        final ImageView vImageProduto    = produtoViewHolder.vImageProduto;
+        final TextView  vPrecoTabela     = produtoViewHolder.vPrecoTabela;
+        final TextView  vPrecoTotal      = produtoViewHolder.vPrecoTotal;
+        final TextView  vPrecoParcelado  = produtoViewHolder.vPrecoParcelado;
 
         vTitleProduto.setText(StringUtil.getTituloReduzido(product.getSkus().get(0).getName()));
+        vPrecoTabela.setText(MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getListPrice()));
+        vPrecoTabela.setPaintFlags(vPrecoTabela.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        vPrecoTotal.setText(MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getPrice()));
+        vPrecoParcelado.setText(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getCount()
+                +context.getResources().getString(R.string.text_multiplicador)
+                +context.getResources().getString(R.string.text_de)
+                +MonetarioUtil.getValorMonetario(product.getSkus().get(0).getSellers().get(0).getBestInstallment().getValue()));
 
         Picasso.with(context)
                 .load(product.getSkus().get(0).getImages().get(0).getImageUrl())
@@ -55,7 +67,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProdutoV
                 .placeholder(R.color.colorGray)
                 .error(R.color.colorGray)
                 .into(vImageProduto);
-
     }
 
     @Override
@@ -72,12 +83,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProdutoV
         protected CardView vCardProduto;
         protected TextView vTitleProduto;
         protected ImageView vImageProduto;
+        protected TextView vPrecoTabela;
+        protected TextView vPrecoTotal;
+        protected TextView vPrecoParcelado;
 
         public ProdutoViewHolder(View v) {
             super(v);
-            vCardProduto  = (CardView)   v.findViewById(R.id.cv_produto);
-            vTitleProduto = (TextView)   v.findViewById(R.id.tv_title_produto);
-            vImageProduto = (ImageView)   v.findViewById(R.id.iv_produto);
+            vCardProduto      = (CardView)   v.findViewById(R.id.cv_produto);
+            vTitleProduto     = (TextView)   v.findViewById(R.id.tv_title_produto);
+            vImageProduto     = (ImageView)   v.findViewById(R.id.iv_produto);
+            vPrecoTabela      = (TextView)   v.findViewById(R.id.tv_preco_tabela);
+            vPrecoTotal       = (TextView)   v.findViewById(R.id.tv_preco_final);
+            vPrecoParcelado   = (TextView)   v.findViewById(R.id.tv_preco_parcelado);
         }
     }
 }

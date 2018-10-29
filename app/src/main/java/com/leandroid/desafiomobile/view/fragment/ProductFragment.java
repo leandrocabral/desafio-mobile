@@ -97,7 +97,6 @@ public class ProductFragment extends Fragment implements IProductFragment {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 loadNextDataFromApi();
-                Log.i("fina","final lista");
                 rlLoadingBottom.setVisibility(View.VISIBLE);
             }
         };
