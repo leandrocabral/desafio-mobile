@@ -40,12 +40,14 @@ public class ProductService {
         request.enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
-                iProductFragment.mountProduct(response.body());
+                if(response.code()==200){
+                    iProductFragment.mountProduct(response.body());
+                }
             }
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-                Log.i("error",t.getMessage());
+
             }
         });
     }
